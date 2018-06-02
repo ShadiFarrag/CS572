@@ -9,11 +9,11 @@ function handleRequests(reqres){
     childProcess.send(reqres.req.url);
     childProcess.on('message', (msg)=> {
         console.log('A chunk received from my child!');
-        if(msg !== 'ended'){
-            reqres.res.write(msg); 
-        }else{
-            reqres.res.end();
-        }
+        reqres.res.write(msg); 
+    });
+    childProcess.on('exit', ()=> {
+        console.log('Child Process Has Exited!');
+        reqres.res.end();
     });
 }
 

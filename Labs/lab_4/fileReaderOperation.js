@@ -6,13 +6,13 @@ process.on('message', (msg)=> {
     // console.log(msg);
     
     const filePath = path.join(__dirname,msg);
-    const srcRead2 = fs.createReadStream(filePath);
+    const srcRead2 = fs.createReadStream(filePath, {encoding:'utf-8'});
 
     srcRead2.on('data', (data)=>{
-        process.send(data.toString());  
+        process.send(data);  
     });
 
-    srcRead2.on('end', ()=> process.send('ended'));
+    srcRead2.on('end', ()=> process.exit());
 
 });
 
