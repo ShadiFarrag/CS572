@@ -1,0 +1,15 @@
+{
+  "name": "xxlab4",
+  "version": "1.0.0",
+  "description": "This is lab 4 solution project",
+  "main": "app.js",
+  "dependencies": {
+    "rxjs": "^6.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shadi Farrag",
+  "license": "ISC"
+}
