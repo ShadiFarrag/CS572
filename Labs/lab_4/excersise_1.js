@@ -6,7 +6,7 @@ const subject = new Subject();
 function handleRequests(reqres){
     reqres.res.writeHead(200, {'Content-Type':'text/html'});
     const childProcess = fork('fileReaderOperation.js');
-    childProcess.send('Start yourself you child!');
+    childProcess.send(reqres.req.url);
     childProcess.on('message', (msg)=> {
         console.log('A chunk received from my child!');
         if(msg !== 'ended'){
