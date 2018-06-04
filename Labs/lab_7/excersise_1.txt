@@ -1,0 +1,24 @@
+DB Design 
+
+	Book
+	{ 
+		ISBN: ,
+		author: ,
+		tags: [],
+		copies: ["First", "Second"]
+	}
+
+	Student
+	{
+		name: ,
+		email: ,
+		phones: []
+	}
+	
+	BorrowedBook
+	{
+		Student: {name: , phone: , email: },
+		Book: {title: , ISBN: , copy: },
+		BorrowDate: ,
+		DueDate:
+	}
