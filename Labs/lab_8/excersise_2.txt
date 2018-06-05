@@ -1,0 +1,39 @@
+	Book
+	{ 
+		ISBN: ,
+		author: ,
+		tags: [],
+		copies: ["First", "Second"]
+	}
+
+	Student
+	{
+		name: ,
+		email: ,
+		phones: []
+	}
+	
+	BorrowedBook
+	{
+		Student: {name: , phone: , email: },
+		Book: {title: , ISBN: , copy: },
+		BorrowDate: ,
+		DueDate:
+	}
+
+Some enhancements for search performance could be:	
+	
+Create three indexes over the book collection one index for each of the following properties:
+
+  - ISBN
+  - Author
+  - Tags
+
+Another Indexes over the Borrowed book fields:
+
+	One Index over the fields
+	- Book.title
+	- DueDate
+
+	One over the field
+	- Student.email
