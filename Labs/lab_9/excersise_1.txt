@@ -1,0 +1,48 @@
+mongoimport --db lab9 --collection zips --file C:\Users\Shadi\Desktop\mum\MWA\CS572\Labs\lab_9\zips.json
+
+use lab9;
+
+db.zips.find({'state':'MA'}).pretty();
+
+1.
+
+	db.zips.aggregate([
+		{$match:{state:'IA'}},
+		{$project:{
+			_id:0, 
+			zipcode:'$_id'
+			}}
+		]);
+	
+2. 
+	db.zips.aggregate([
+		{$match:{ pop:{$lt:1000} }},
+		{$project:{
+			_id:0, 
+			zipcode:'$_id'
+			}}
+		]);
+3.
+	db.zips.aggregate([
+		{$group:{
+			_id:{'city':'$city','state':'$state'},
+			num_zipcodes: {$sum:1}
+		}},
+		{$match:{num_zipcodes:{$gt:1}}},
+		{$sort:{'_id.state':1,'_id.city':1}},
+		{$project:{_id:0, city:'$_id.city',num_zipcodes:1}}
+		]);	
+4.
+	db.zips.aggregate([
+		{$group:{
+			_id:{'state':'$state','city':'$city'},
+			population: {$sum:'$pop'}
+		}},
+		{$sort:{population:1}},
+		{$group:{
+			_id:'$_id.state', 
+			city:{$first:'$_id.city'}, 
+			population:{$first:'$population'}}
+		},
+		{$sort:{'_id':1}}
+		]);	
