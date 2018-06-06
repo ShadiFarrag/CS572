@@ -1,0 +1,7 @@
+GET: http://localhost:4377/points
+GET: http://localhost:4377/points/near-points
+GET: http://localhost:4377/points/near-points?pointName=Paradiso&pointCategory=Cafe
+GET: http://localhost:4377/points/point?pointName=MUM+Recreation+Center
+POST(Include JSON on Body): http://localhost:4377/points
+PUT(Include JSON on Body): http://localhost:4377/points/point?pointName=David+Lynch+Foundation+TV
+DELETE: http://localhost:4377/points/point?pointName=Sweet+and+Saucy

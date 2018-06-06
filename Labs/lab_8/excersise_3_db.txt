@@ -1,0 +1,26 @@
+
+use lab8;
+
+db.xxpoints.drop();
+
+db.xxpoints.insert({name:'Fairfield, Iowa', category:'City', location:[-91.963691, 41.007611]});
+
+db.xxpoints.insert({name:'Post Office', category:'Service', location:[-91.965394, 41.007399]});
+
+db.xxpoints.insert({name:'Sweet and Saucy', category:'Restaurant', location:[-91.962326, 41.008322]});
+
+db.xxpoints.insert({name:'Paradiso', category:'Cafe', location:[-91.963570, 41.007787]});
+ 
+db.xxpoints.insert({name:'Public Library', category:'Library', location:[-91.964343, 41.004452]});
+
+db.xxpoints.find().pretty();
+
+db.xxpoints.createIndex({location:'2d'});
+
+db.xxpoints.find({location: {$near: [-91.9665342,41.017654]}, category:'Cafe'}).limit(3).pretty();
+
+db.xxpoints.find({location: {$near: [-91.9665342,41.017654]}, category:'Cafe', 'name': 'Paradiso'}).limit(3).pretty();
+
+db.xxpoints.find({$or: [{$and:[{location: {$near: [-91.9665342,41.017654]}},{category:'Cafe'}]},{'name': 'xxName'}]}).limit(3).pretty();
+
+{$or: [{$and:[{location: {$near: [-91.9665342,41.017654]}},{category:'Cafe'}]},{'name': 'xxName'}]}
