@@ -1,0 +1,12 @@
+ng g module farmsMarketModule
+
+ng g component farmsComponent -it -is
+ng g s farmsDB
+
+ng g component farmDetails -it -is
+
+ng generate guard farmDetailGrd
+
+ng g component error -it -is
+
+
