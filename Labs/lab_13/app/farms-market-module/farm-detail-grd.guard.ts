@@ -18,10 +18,10 @@ export class FarmDetailGrdGuard implements CanActivate {
         if (this.db.getDataAt(next.params['id']))
           return true;
         else {
-          this.router.navigate(['error']);
+          this.router.navigate(['farmsMarket/error']);
         }
       } else {
-        this.router.navigate(['error']);
+        this.router.navigate(['farmsMarket/error']);
       }
   }
 }

@@ -12,7 +12,10 @@ import {FarmDetailGrdGuard} from "./farm-detail-grd.guard";
     /*RouterModule,*/
     RouterModule.forChild([
       { path: '', component: FarmsComponentComponent },
-      { path: 'farmDetails/:id', component: FarmDetailsComponent, canActivate: [FarmDetailGrdGuard] }
+      { path: '', component: FarmsComponentComponent, 
+        children: [{ path: 'farmDetails/:id', component: FarmDetailsComponent, canActivate: [FarmDetailGrdGuard] }]
+      },
+      { path: 'error', component: ErrorComponent }
     ]) 
   ],
   declarations: [FarmsComponentComponent, FarmDetailsComponent, ErrorComponent],
